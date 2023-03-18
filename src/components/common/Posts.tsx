@@ -1,28 +1,22 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Entry } from 'contentful';
 import { IPostFields } from '../../@types/generated/contentful';
-import { BLOCKS, Node } from '@contentful/rich-text-types';
+import striptags from 'striptags';
 import { Link } from 'react-router-dom';
 
 type Props = {
     post: Entry<IPostFields>
 }
 
-const Post = ({post}: Props) => {
+const Posts = ({post}: Props) => {
     const { title, headerImage, body, author, datePublished} = post.fields;
     const authorName = author.fields.name as string; // author is the IProfileFields type.
+    
+    const condensedBody = striptags(documentToHtmlString(body)).substring(0, 200); //This converts the body rich texts to a HTML string and striptags removes the HTML tags.
 
     const date = new Date(datePublished);
     const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-    const options = {
-        renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
-            const { url, fileName } = node.data.target.fields.file;
-            return <img src={url} alt={fileName} />;
-          },
-        }
-      };
 
     return(
         <div>
@@ -30,9 +24,9 @@ const Post = ({post}: Props) => {
             <p>By <Link to="/about">{authorName}</Link></p>
             <p>{formattedDate}</p>
             <img src={headerImage.fields.file.url} width="300px" alt="avatar"/>
-            <p>{documentToReactComponents(body, options)}</p>
+            <p>{condensedBody+"..."}</p>
         </div>
     )
 };
 
-export default Post;
+export default Posts;

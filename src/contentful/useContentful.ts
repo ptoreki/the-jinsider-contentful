@@ -1,8 +1,6 @@
 import { createClient } from 'contentful'
 import { IPostFields, IProfileFields } from '../@types/generated/contentful'
 
-
-
 const useContentful = () => {
     const client = createClient({
         space: import.meta.env.VITE_CONTENTFUL_SPACE_ID || "",
@@ -40,7 +38,23 @@ const useContentful = () => {
         }
     }
 
-    return { getProfiles, getPosts } 
+    const getLatestPost = async () => {
+        try {
+          const entries = await client.getEntries<IPostFields>({
+            content_type: "post",
+            select: "fields",
+            order: "-sys.createdAt",
+            limit: 1
+          })
+
+          return entries
+
+        } catch (error) {
+          console.log(`Error fetching latest post: ${error}`)
+        }
+      }
+
+    return { getProfiles, getPosts, getLatestPost } 
 }
 
 export default useContentful

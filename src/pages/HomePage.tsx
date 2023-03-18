@@ -1,11 +1,13 @@
-import Footer from '../components/layout/Footer';
-import Header from '../components/layout/Header';
+import Footer from '../components/common/layout/Footer';
+import Header from '../components/common/layout/Header';
+import AllPostsPage from './AllPostsPage';
+import LatestPostPage from './LatestPostPage';
 
 const HomePage = () => {
   return (
     <div>
-      <Header />
-      <Footer />
+      <LatestPostPage />
+      <AllPostsPage />
     </div>
   )
 }

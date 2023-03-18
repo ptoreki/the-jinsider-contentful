@@ -1,4 +1,3 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Entry } from 'contentful';
 import { IProfileFields } from '../../@types/generated/contentful';
 

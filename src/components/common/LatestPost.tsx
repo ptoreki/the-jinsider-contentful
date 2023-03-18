@@ -8,7 +8,7 @@ type Props = {
     post: Entry<IPostFields>
 }
 
-const Post = ({post}: Props) => {
+const LatestPost = ({post}: Props) => {
     const { title, headerImage, body, author, datePublished} = post.fields;
     const authorName = author.fields.name as string; // author is the IProfileFields type.
 
@@ -35,4 +35,4 @@ const Post = ({post}: Props) => {
     )
 };
 
-export default Post;
+export default LatestPost;

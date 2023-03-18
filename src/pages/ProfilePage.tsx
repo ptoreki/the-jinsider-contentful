@@ -2,8 +2,8 @@ import { EntryCollection } from 'contentful';
 import { useEffect, useState } from 'react'
 import { IProfileFields } from '../@types/generated/contentful';
 import Profile from '../components/common/Profile';
-import Footer from '../components/layout/Footer';
-import Header from '../components/layout/Header';
+import Footer from '../components/common/layout/Footer';
+import Header from '../components/common/layout/Header';
 import useContentful from '../contentful/useContentful';
 
 const ProfilePage = () => {
@@ -20,9 +20,7 @@ const ProfilePage = () => {
   
     return (
       <div>
-        <Header /> 
-        { profiles?.items.map((profile, index) => <Profile key={profile.sys.id} profile = {profile}/>)}
-        <Footer />
+        { profiles?.items.map((profile) => <Profile key={profile.sys.id} profile = {profile}/>)}
       </div>
     )
 

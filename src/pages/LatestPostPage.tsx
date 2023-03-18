@@ -6,21 +6,21 @@ import Footer from '../components/common/layout/Footer';
 import Header from '../components/common/layout/Header';
 import useContentful from '../contentful/useContentful';
 
-const PostPage = () => {
-    const [posts, setPosts] = useState<null | EntryCollection<IPostFields>>(null);
-    const { getPosts } = useContentful();
+const LatestPostPage = () => {
+    const [post, setPost] = useState<null | EntryCollection<IPostFields>>(null);
+    const { getLatestPost } = useContentful();
     
     useEffect(() => {
-        getPosts()?.then((response) => {
+        getLatestPost()?.then((response) => {
             if (response) {
-                setPosts(response);
+                setPost(response);
             }
         });
     }, []);
   
     return (
       <div>
-        { posts?.items.map((post) => 
+        { post?.items.map((post) => 
             <div key={post.sys.id}>
               <Post post={post} />
             </div>
@@ -30,4 +30,4 @@ const PostPage = () => {
 
 }
 
-export default PostPage;
+export default LatestPostPage;
