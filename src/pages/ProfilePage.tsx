@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { IProfileFields } from '../@types/generated/contentful';
 import Profile from '../components/common/Profile';
 import useContentful from '../contentful/useContentful';
+import { useProfiles } from '../utils/useReactQuery';
 
 const ProfilePage = () => {
     const [profiles, setProfiles] = useState<null | EntryCollection<IProfileFields>>(null);

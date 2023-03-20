@@ -19,7 +19,7 @@ const useContentful = () => {
             console.log(`Error fetching profiles: ${error}`)
         }
     }
-
+ 
     const getPosts = async () => {
         try{
           const entries = await client.getEntries<IPostFields>({

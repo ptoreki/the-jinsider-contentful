@@ -1,10 +1,9 @@
 import { useParams } from 'react-router-dom';
 import Post from '../components/common/Post';
-import { usePostById } from '../utils/usePosts';
+import { usePostById } from '../utils/useReactQuery';
 
 const FullPostPage = () => {
   const { id: postId} = useParams<{ id: string }>();
-  
   const postsQuery = usePostById(postId)
   if(postsQuery.status === 'loading' || postsQuery.status === 'error'){
     return null

@@ -13,7 +13,7 @@ export const usePosts = () => {
        }});
       }
     return useQuery(["posts"], sortPosts)
-  }
+}
 
 export const usePostById = (postId?: string) => {
   const { getPostById } = useContentful();
@@ -21,4 +21,20 @@ export const usePostById = (postId?: string) => {
     return getPostById(postId as string)
   }
   return useQuery([postId], fetch ,{ enabled: postId !== undefined})
+}
+
+export const useLatestPost = () => {
+  const { getLatestPost } =  useContentful();
+  const fetch = () => {
+    return getLatestPost()
+  }
+  return useQuery(["latestPosts"], fetch)
+}
+
+export const useProfiles = () => {
+  const { getProfiles } = useContentful();
+  const fetch = () => {
+    return getProfiles()
+  }
+  return useQuery(["profiles", fetch])
 }

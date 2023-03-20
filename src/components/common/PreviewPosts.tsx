@@ -1,4 +1,4 @@
-import { usePosts } from '../../utils/usePosts';
+import { usePosts } from '../../utils/useReactQuery';
 import Posts from './Posts';
 
 const PreviewPosts = () => {

@@ -1,5 +1,5 @@
 import Posts from '../components/common/Posts';
-import { usePosts } from '../utils/usePosts';
+import { usePosts } from '../utils/useReactQuery';
 
 const AllPostsPage = () => {
   const postsQuery = usePosts()

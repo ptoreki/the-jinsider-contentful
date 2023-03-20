@@ -1,24 +1,14 @@
-import { EntryCollection } from 'contentful';
-import { useEffect, useState } from 'react'
-import { IPostFields } from '../@types/generated/contentful';
+import { useLatestPost } from '../utils/useReactQuery';
 import Post from '../components/common/Post';
-import useContentful from '../contentful/useContentful';
 
 const LatestPostPage = () => {
-    const [post, setPost] = useState<null | EntryCollection<IPostFields>>(null);
-    const { getLatestPost } = useContentful();
-    
-    useEffect(() => {
-        getLatestPost()?.then((response) => {
-            if (response) {
-                setPost(response);
-            }
-        });
-    }, []);
-  
+  const postsQuery = useLatestPost()
+  if(postsQuery.status === 'loading' || postsQuery.status === 'error'){
+    return null
+  }
     return (
       <div>
-        { post?.items.map((post) => 
+        { postsQuery.data?.items.map((post) => 
             <div key={post.sys.id}>
               <Post post={post} />
             </div>

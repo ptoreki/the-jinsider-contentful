@@ -11,7 +11,6 @@ type Props = {
 const LatestPost = ({post}: Props) => {
     const { title, headerImage, body, author, datePublished} = post.fields;
     const authorName = author.fields.name as string; // author is the IProfileFields type.
-
     const date = new Date(datePublished);
     const formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
