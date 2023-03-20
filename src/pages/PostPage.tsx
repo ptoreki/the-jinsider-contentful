@@ -1,11 +1,11 @@
-import { EntryCollection } from 'contentful';
+/* import { EntryCollection } from 'contentful';
 import { useEffect, useState } from 'react'
 import { IPostFields } from '../@types/generated/contentful';
 import Post from '../components/common/Post';
-
 import useContentful from '../contentful/useContentful';
 
 const PostPage = () => {
+
     const [posts, setPosts] = useState<null | EntryCollection<IPostFields>>(null);
     const { getPosts } = useContentful();
     
@@ -29,3 +29,4 @@ const PostPage = () => {
 }
 
 export default PostPage;
+ */

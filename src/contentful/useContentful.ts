@@ -8,35 +8,38 @@ const useContentful = () => {
     })
 
     const getProfiles = async () => {
-
         try{
-            const entries = await client.getEntries<IProfileFields>({
-                content_type: "profile",
-                select: "fields",
-                order: "fields.name"
-            })
-
-            return entries
-
+          const entries = await client.getEntries<IProfileFields>({
+            content_type: "profile",
+            select: "fields",
+            order: "fields.name"
+        })
+          return entries
         } catch (error) {
             console.log(`Error fetching profiles: ${error}`)
         }
     }
 
     const getPosts = async () => {
-
         try{
-            const entries = await client.getEntries<IPostFields>({
-                content_type: "post",
-                select: "fields"
-            })
-            
-            return entries
-
+          const entries = await client.getEntries<IPostFields>({
+            content_type: "post",
+            select: "fields"
+          })
+          return entries
         } catch (error) {
             console.log(`Error fetching posts: ${error}`)
         }
     }
+
+    const getPostById = async (postId: string) => {
+        try {
+          const entry = await client.getEntry<IPostFields>(postId);
+          return entry;
+        } catch (error) {
+          console.log(`Error fetching post by id: ${error}`);
+        }
+      };
 
     const getLatestPost = async () => {
         try {
@@ -46,15 +49,13 @@ const useContentful = () => {
             order: "-sys.createdAt",
             limit: 1
           })
-
           return entries
-
         } catch (error) {
           console.log(`Error fetching latest post: ${error}`)
         }
       }
 
-    return { getProfiles, getPosts, getLatestPost } 
+    return { getProfiles, getPosts, getPostById, getLatestPost } 
 }
 
 export default useContentful
