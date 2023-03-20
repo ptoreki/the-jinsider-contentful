@@ -2,8 +2,6 @@ import { EntryCollection } from 'contentful';
 import { useEffect, useState } from 'react'
 import { IPostFields } from '../@types/generated/contentful';
 import Post from '../components/common/Post';
-import Footer from '../components/common/layout/Footer';
-import Header from '../components/common/layout/Header';
 import useContentful from '../contentful/useContentful';
 
 const LatestPostPage = () => {
@@ -27,7 +25,6 @@ const LatestPostPage = () => {
           )}
       </div>
     )
-
 }
 
 export default LatestPostPage;

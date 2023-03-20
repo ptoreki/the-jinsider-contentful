@@ -19,19 +19,33 @@ const Post = ({post}: Props) => {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
             const { url, fileName } = node.data.target.fields.file;
-            return <img src={url} alt={fileName} />;
+            return <img src={url} alt={fileName} className="author-avatar" />;
           },
         }
       };
 
     return(
-        <div>
-            <h2>{title}</h2>
-            <p>By <Link to="/about">{authorName}</Link></p>
-            <p>{formattedDate}</p>
-            <img src={headerImage.fields.file.url} width="300px" alt="avatar"/>
-            <p>{documentToReactComponents(body, options)}</p>
+      <>
+        <div className='post-container'>
+          <img src={headerImage.fields.file.url}alt="featured image" className='post-container__image'/>
+            <div className='post-container__items'>
+              <p className='post-container__items__category'></p>
+              <h2 className='post-container__items__title'>{title}</h2>
+              <div style={{marginTop:15}}>
+                <div style={{width: 700, height: 13, backgroundColor:"rgba(186, 12, 47, 1)"}}></div>
+                <div style={{width: 700, height: 3, backgroundColor:"rgba(255, 255, 255, 1)"}}></div>
+                <div style={{width: 700, height: 7, backgroundColor:"rgba(0, 32, 91, 1)"}}></div>
+                <div style={{width: 700, height: 3, backgroundColor:"rgba(255, 255, 255, 1)"}}></div>
+                <div style={{width: 700, height: 13, backgroundColor:"rgba(186, 12, 47, 1)"}}></div>
+              </div>
+              <p className='post-container__items__author'>By <Link to="/about" style={{ color: 'inherit', textDecoration: 'inherit', textTransform: 'uppercase'}}>{authorName}</Link></p>
+              <p className='post-container__items__date'>- {formattedDate}</p>
+            </div>
         </div>
+        <div className='body-container'>
+          <p>{documentToReactComponents(body, options)}</p>
+        </div>
+      </>
     )
 };
 

@@ -8,11 +8,18 @@ type Props = {
 const Profile = ({profile}: Props) => {
     const { name, avatar, description } = profile.fields;
     return(
-        <div>
-            <h2>{name}</h2>
-            <img src={avatar.fields.file.url} width="300px" alt="avatar"/>
-            <p>{description}</p>
-        </div>
+        <>
+            <h1>About</h1>
+            <div className='author-container'>
+                <div>
+                    <img src={avatar.fields.file.url} alt="avatar" className='author-container__avatar'/>
+                </div>
+                <div className='author-info-container'>
+                    <h2 className='author-info-container__name'>{name}</h2>
+                    <p className='author-info-container__description'>"{description}"</p>
+                </div>
+            </div>
+        </>
     )
 };
 
