@@ -30,11 +30,3 @@ export const useLatestPost = () => {
   }
   return useQuery(["latestPosts"], fetch)
 }
-
-export const useProfiles = () => {
-  const { getProfiles } = useContentful();
-  const fetch = () => {
-    return getProfiles()
-  }
-  return useQuery(["profiles", fetch])
-}
