@@ -32,6 +32,13 @@ li {
   align-items: center;
 }
 
+.iframe-container {
+  padding-bottom: 56.25%; 
+  position: relative; 
+  display: block; 
+  width: 100%;
+}
+
 /*Center App*/
 .center {
   display: flex;

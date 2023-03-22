@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Entry } from 'contentful';
 import { IPostFields } from '../../@types/generated/contentful';
-import { BLOCKS, Node } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, Node } from '@contentful/rich-text-types';
 import { Link } from 'react-router-dom';
 
 type Props = {
@@ -21,6 +21,17 @@ const Post = ({post}: Props) => {
             const { url, fileName } = node.data.target.fields.file;
             return <img src={url} alt={fileName} className="author-avatar" />;
           },
+          [INLINES.HYPERLINK]: (node: Node) => {
+            if((node.data.uri).includes("youtube.com/embed")) {
+              return <span className='iframe-container'><iframe title="Unique Title 002" src={node.data.uri} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" frameBorder="0" allowFullScreen  style={{
+                height: 315,
+                width:560,
+                position: "absolute",
+                top: 0, 
+                left: 0
+              }}></iframe></span>
+            }
+          }
         }
       };
 
