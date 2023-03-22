@@ -23,7 +23,7 @@ const Post = ({post}: Props) => {
           },
           [INLINES.HYPERLINK]: (node: Node) => {
             if((node.data.uri).includes("youtube.com/embed")) {
-              return <span className='iframe-container'><iframe title="Unique Title 002" src={node.data.uri} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" frameBorder="0" allowFullScreen  style={{
+              return <span className='iframe-container'><iframe title="" src={node.data.uri} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen  style={{
                 height: 315,
                 width:560,
                 position: "absolute",
