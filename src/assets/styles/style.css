@@ -5,6 +5,22 @@
   background-color: #FAFAFA;
 }
 
+.outer {
+  width: 100vw;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.outer > div {
+  width: 100vw;
+  height: 4px;
+  background: #FAFAFA;
+
+  -moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.75);
+  -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+  box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+}
+
 html, body, #root {
   min-height: 100vh;
   margin: 0;
@@ -67,7 +83,7 @@ li {
       }
 
 nav{
-  height: 80px;
+  height: 50px;
   margin-top: 20px;
 }
 
@@ -84,7 +100,7 @@ nav{
   }
 
     .header-container__navbar__link {
-
+      margin-right: 30px;
     }
 
     .header-container__navbar__sm-link {

@@ -14,6 +14,7 @@ const App = () => {
       <Router>
         <div className='center'>
           <Header />
+          <div className='outer'><div></div></div>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/posts" element={<AllPostsPage />} />
